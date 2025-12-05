@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PRIMERA STEREO - Venezuela 24/7</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{
+      height:100vh;height:100dvh;width:100vw;overflow:hidden;
+      background:#000;font-family:system-ui,-apple-system,sans-serif;color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at top,#001122,#000)
+    }
+    .snow{position:fixed;inset:0;z-index:1;pointer-events:none}
+    .snow span{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;
+      box-shadow:0 0 8px #fff;opacity:0.65;animation:snow linear infinite}
+    @keyframes snow{0%{transform:translateY(-100vh)}100%{transform:translateY(100vh) translateX(60px)}}
+
+    .player{
+      width:90vw;max-width:375px;background:#000;
+      border:8px solid #0e60b8; /* ← TU COLOR AZUL OFICIAL */
+      border-radius:42px;
+      padding:35px 22px 30px;
+      box-shadow:0 0 80px rgba(14,96,184,0.7); /* brillo azul */
+      text-align:center;position:relative;z-index:10
+    }
+
+    .logo{font-size:3.2rem;font-weight:900;letter-spacing:8px;
+      background:linear-gradient(90deg,#0e60b8,#ffcc00,#cf142b);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 0 30px #0e60b8,0 0 60px #ffcc00;
+      animation:neon 3s infinite alternate}
+    @keyframes neon{0%{filter:brightness(1)}100%{filter:brightness(1.6)}}
+
+    .cover{width:195px;height:195px;border-radius:35px;margin:25px auto;
+      object-fit:cover;border:9px solid #0e60b8;
+      box-shadow:0 0 70px #0e60b8}
+
+    .title{font-size:1.55rem;font-weight:900;margin:16px 0 8px;
+      color:#fff;text-shadow:0 0 20px #0e60b8}
+    .artist{font-size:1.35rem;color:#0e60b8;margin-bottom:22px;
+      text-shadow:0 0 20px #0e60b8}
+
+    .play{width:82px;height:82px;border-radius:50%;
+      background:linear-gradient(45deg,#0e60b8,#ffcc00);border:none;
+      margin:20px auto;cursor:pointer;box-shadow:0 0 70px #0e60b8}
+    .play svg{width:48px;height:48px;fill:#fff}
+
+    .vol{width:82%;height:11px;background:rgba(255,255,255,0.2);
+      border-radius:11px;margin:22px auto;overflow:hidden}
+    #volFill{height:100%;width:75%;background:linear-gradient(90deg,#0e60b8,#ffcc00)}
+
+    .buttons{display:flex;gap:18px;justify-content:center;margin:25px 0 20px}
+    .btn{padding:13px 28px;background:rgba(14,96,184,0.3);border:2px solid #0e60b8;
+      border-radius:30px;font-weight:bold;font-size:1rem;cursor:pointer;transition:.3s}
+    .btn:hover{background:#0e60b8;color:#fff}
+    .btn.app{background:#0e60b8;color:#fff;padding:14px 36px}
+
+    .social{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+      max-width:320px;margin:15px auto 0
+    }
+    .social a img{
+      width:46px;height:46px;background:#fff;border-radius:10px;padding:4px;
+      filter:drop-shadow(0 0 16px #0e60b8);transition:.3s
+    }
+    .social a img:hover{transform:scale(1.5)}
+  </style>
+</head>
+<body>
+
+  <div class="snow" id="snow"></div>
+
+  <div class="player">
+    <div class="logo">PRIMERA STEREO</div>
+
+    <img src="https://primerastereofmradio.free.nf/image/PRIMERASTEREO.jpg" class="cover" id="cover">
+
+    <div class="title" id="title">PRIMERA STEREO<br>Radio Online En vivo 24/7</div>
+    <div class="artist" id="artist">Venezuela</div>
+
+    <button class="play" id="playBtn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+
+    <div class="vol"><div id="volFill"></div></div>
+
+    <div class="buttons">
+      <div class="btn" onclick="share()">Compartir</div>
+      <div class="btn app" onclick="window.open('https://www.appcreator24.com/app3819260-6rbmq8','_blank')">App</div>
+    </div>
+
+    <div class="social">
+      <a href="https://twitter.com/Primera_Stereo" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png">
+      </a>
+      <a href="https://www.facebook.com/PrimeraStereoRadio" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
+      </a>
+      <a href="https://www.instagram.com/Primera.Stereo/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=+5804127097429&text=Hola%20estoy%20escuchando%20la%20radio" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png">
+      </a>
+      <a href="https://www.tiktok.com/@primerastereo" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png">
+      </a>
+      <a href="https://t.me/PrimeraStereo" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+      </a>
+      <!-- TU ICONO DE SOUNDCLOUD (el que conseguiste) -->
+      <a href="https://soundcloud.com/primerastereo" target="_blank">
+        <img src="https://img.icons8.com/fluency/100/soundcloud.png">
+      </a>
+      <a href="https://www.youtube.com/@primerastereo" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png">
+      </a>
+    </div>
+  </div>
+
+  <audio id="stream" preload="none">
+    <source src="https://primerastereo.stream.laut.fm/primerastereo" type="audio/mpeg">
+  </audio>
+
+<script>
+  // Nieve
+  const snow=document.getElementById('snow');
+  for(let i=0;i<100;i++){
+    const s=document.createElement('span');
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(Math.random()*10+14)+'s';
+    s.style.animationDelay=Math.random()*10+'s';
+    snow.appendChild(s);
+  }
+
+  const stream=document.getElementById('stream'), playBtn=document.getElementById('playBtn'),
+        title=document.getElementById('title'), artist=document.getElementById('artist'),
+        cover=document.getElementById('cover'), volFill=document.getElementById('volFill');
+
+  let playing=false;
+
+  playBtn.onclick=()=>{
+    if(playing){
+      stream.pause();
+      playBtn.innerHTML=`<path d="M8 5v14l11-7z"/>`;
+    }else{
+      stream.play();
+      playBtn.innerHTML=`<rect x="6" y="4" width="5" height="16"/><rect x="13" y="4" width="5" height="16"/>`;
+    }
+    playing=!playing;
+  };
+
+  document.querySelector('.vol').onclick=e=>{
+    const rect=e.target.getBoundingClientRect();
+    const percent=(e.clientX-rect.left)/rect.width*100;
+    stream.volume=percent/100;
+    volFill.style.width=percent+'%';
+  };
+
+  setInterval(async()=>{
+    try{
+      const r=await fetch("https://api.laut.fm/station/primerastereo/current_song");
+      const d=await r.json();
+      if(d.title){
+        title.textContent=d.title.length>26?d.title.substr(0,26)+'...':d.title;
+        artist.textContent=d.artist?.name||"Primera Stereo";
+        const q=encodeURIComponent((d.artist?.name||"")+" "+d.title);
+        const res=await fetch("https://corsproxy.io/?https://api.deezer.com/search?q="+q+"&limit=1");
+        const data=await res.json();
+        if(data.data?.[0]?.album?.cover_big) cover.src=data.data[0].album.cover_big;
+      }
+    }catch{}
+  },10000);
+
+  function share(){
+    navigator.share?.({title:"PRIMERA STEREO",url:location.href}) ||
+    (navigator.clipboard.writeText(location.href), alert("Enlace copiado!"));
+  }
+</script>
+</body>
+</html>
