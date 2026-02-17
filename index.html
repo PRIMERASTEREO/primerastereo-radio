@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PRIMERA STEREO | RADIO ONLINE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="https://primerastereo.netlify.app/favicon.png">
     <style>
-        /* Animación de pulso para el botón */
         @keyframes pulse-blue {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(3, 44, 252, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(3, 44, 252, 0); }
@@ -15,7 +14,6 @@
         }
         .pulsating { animation: pulse-blue 2s infinite; }
 
-        /* Estilos para la Marquesina (Solo Canción) */
         .marquee-wrapper {
             width: 100%;
             overflow: hidden;
@@ -33,10 +31,17 @@
         }
 
         body {
-            height: 100vh; margin: 0; overflow: hidden; display: flex; flex-direction: column;
+            /* Usamos dvh para móviles y quitamos el corte estricto */
+            min-height: 100vh;
+            min-height: 100dvh; 
+            margin: 0; 
+            overflow-x: hidden;
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column;
             background: url('https://primerastereo.netlify.app/favicon.png') no-repeat center center fixed;
-            background-size: cover; font-family: 'Segoe UI', sans-serif;
-            justify-content: space-between;
+            background-size: cover; 
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .overlay-bg {
@@ -44,7 +49,14 @@
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 0;
         }
 
-        .main-content { flex: 1; display: flex; align-items: center; justify-content: center; z-index: 1; padding: 10px; min-height: 0; }
+        .main-content { 
+            flex: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 5; 
+            padding: 20px 10px;
+        }
         
         .radio-container { 
             width: 100%; max-width: 280px; padding: 15px; 
@@ -67,13 +79,25 @@
         
         .volume-slider { width: 140px; accent-color: #032cfc; margin-top: 15px; cursor: pointer; }
 
-        /* Contenedor de textos con artista fijo */
         .now-playing { color: white; font-size: 0.85rem; margin-top: 5px; min-height: 50px; width: 100%; overflow: hidden; }
         #artist-text { color: white; font-weight: normal; margin-bottom: 2px; display: block; }
         
-        footer { padding: 10px; text-align: center; z-index: 1; }
-        .social-icons { display: flex; justify-content: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
-        .social-btn { color: white; font-size: 1.3rem; opacity: 0.7; transition: 0.3s; }
+        footer { 
+            padding: 20px 10px; 
+            text-align: center; 
+            z-index: 10; 
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .social-icons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 12px; 
+            margin-bottom: 10px; 
+            flex-wrap: wrap; 
+        }
+        .social-btn { color: white; font-size: 1.4rem; opacity: 0.8; transition: 0.3s; display: inline-block; }
         .social-btn:hover { opacity: 1; color: #032cfc; transform: scale(1.1); }
     </style>
 </head>
@@ -83,7 +107,7 @@
 
     <div class="main-content">
         <div class="radio-container">
-            <h1 style="color:white; font-size:1.3rem; margin:2; letter-spacing: 1px;">PRIMERA STEREO</h1>
+            <h1 style="color:white; font-size:1.3rem; margin:0 0 5px 0; letter-spacing: 1px;">PRIMERA STEREO</h1>
             <p style="color:#ffffff; font-size:0.9rem; margin-bottom:15px; font-weight: bold; text-transform: uppercase;">Radio Online</p>
             
             <img id="track-cover" src="https://primerastereo.netlify.app/favicon.png">
@@ -117,11 +141,11 @@
             <a href="https://tiktok.com/@primerastereo" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.twitter.com/Primera_Stereo" target="_blank" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="https://soundcloud.com/primerastereo" target="_blank" class="social-btn"><i class="fab fa-soundcloud"></i></a>
-            <a href="https://www.appcreator24.com/app903548-fpnj0d" target="_blank" class="social-btn"><i class="fab fa-google-play"></i></a>
+            <a href="https://www.appcreator24.com/app903548-fpnj0d" target="_blank" class="social-btn" title="Descargar App"><i class="fab fa-google-play"></i></a>
             <a href="https://api.whatsapp.com/send?phone=+5804127097429" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://www.youtube.com/@primerastereo" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <p style="color:#ffffff; font-size:0.65rem; margin:0;">© 2026 PRIMERA STEREO RADIO ONLINE</p>
+        <p style="color:#ffffff; font-size:0.7rem; margin:0; opacity: 0.8;">© 2026 PRIMERA STEREO RADIO ONLINE</p>
     </footer>
 
     <script>
