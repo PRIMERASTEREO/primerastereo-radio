@@ -220,5 +220,22 @@
         document.getElementById('play-btn').onclick = togglePlay;
         document.getElementById('volume-slider').oninput = (e) => audio.volume = e.target.value;
     </script>
+    <script>
+  // 1. Evitar el menú del botón derecho (segundo botón)
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // 2. Inhabilitar Ctrl+U (y Ctrl+Shift+I / F12 para mayor seguridad)
+  document.addEventListener('keydown', function(event) {
+    if (
+      (event.ctrlKey && event.key === 'u') || // Ctrl+U
+      (event.ctrlKey && event.shiftKey && event.key === 'I') || // Ctrl+Shift+I
+      event.key === 'F12' // F12
+    ) {
+      event.preventDefault();
+      return false;
+    }
+  });
+</script>
 </body>
 </html>
+
